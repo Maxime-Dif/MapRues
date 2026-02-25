@@ -19,7 +19,7 @@
   --ink2:#6b5e45;
   --border:#e0d5c0;
 }
-html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-serif;}
+html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:#f9f5ee;}
 #map{position:absolute;top:0;left:0;right:0;height:60%;}
 
 /* LOADER */
@@ -88,7 +88,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
 /* SÉLECTEUR SHEETS */
 #street-selector{
-  position:absolute;bottom:0;left:0;right:0;z-index:810;top:auto;
+  position:absolute;bottom:0;left:0;right:0;top:auto;z-index:810;
   background:#fff;
   box-shadow:0 -4px 24px rgba(0,0,0,.15);
   padding:16px 16px 24px;
@@ -116,7 +116,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   margin:0 auto;font-size:22px;color:var(--ink2);
 transition:transform .25s;line-height:1;
 }
-#selector-title.collapsed #selector-chevron{transform:rotate(-90deg);}
+#selector-title.collapsed #selector-chevron{transform:none;}
 #street-list{overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:4px;margin-top:8px;}
 #street-list.collapsed{display:none;}
 /* Panneau réduit : juste le titre */
@@ -285,7 +285,7 @@ transition:transform .25s;line-height:1;
   <div id="selector-title" onclick="toggleStreetList()">
     Rues enregistrées
     <span class="selector-badge" id="count-badge">…</span>
-    <span id="selector-chevron">▾</span>
+   <span id="selector-chevron">▲</span>
   </div>
   <div id="street-list"></div>
 </div>
@@ -826,7 +826,7 @@ function toggleStreetList(){
   selector.classList.toggle('expanded',!isOpen);
   list.classList.toggle('collapsed',isOpen);
 title.classList.toggle('collapsed',isOpen);
-document.getElementById('selector-chevron').textContent = isOpen ? '▲' : '▼';
+document.getElementById('selector-chevron').textContent = isOpen ? '▼' : '▲';
 }
 
 loadSheets();
