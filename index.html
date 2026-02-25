@@ -88,7 +88,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
 /* SÉLECTEUR SHEETS */
 #street-selector{
-  position:absolute;bottom:0;left:0;right:0;z-index:810;
+  position:absolute;bottom:0;left:0;right:0;z-index:810;top:auto;
   background:#fff;
   box-shadow:0 -4px 24px rgba(0,0,0,.15);
   padding:16px 16px 24px;
@@ -113,8 +113,8 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 }
 #selector-title:hover{background:#f0ebe0;}
 #selector-chevron{
-  margin:0 auto;font-size:16px;color:var(--ink2);
-  transition:transform .25s;line-height:1;
+  margin:0 auto;font-size:22px;color:var(--ink2);
+transition:transform .25s;line-height:1;
 }
 #selector-title.collapsed #selector-chevron{transform:rotate(-90deg);}
 #street-list{overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:4px;margin-top:8px;}
@@ -278,21 +278,10 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <circle cx="16" cy="16" r="7" fill="white"/>
     </svg>
   </button>
-  <button id="btn-geolocate" title="Ma position" onclick="goToMyLocation()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="4" fill="#3b82f6"/>
-      <circle cx="12" cy="12" r="8" stroke="#3b82f6" stroke-width="2" fill="none"/>
-      <line x1="12" y1="2" x2="12" y2="5" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="12" y1="19" x2="12" y2="22" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="2" y1="12" x2="5" y2="12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="19" y1="12" x2="22" y2="12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  </button>
 </div>
 
 <!-- SÉLECTEUR RUES SHEETS -->
 <div id="street-selector">
-  <div id="selector-handle"></div>
   <div id="selector-title" onclick="toggleStreetList()">
     Rues enregistrées
     <span class="selector-badge" id="count-badge">…</span>
@@ -836,7 +825,8 @@ function toggleStreetList(){
   // Ouvrir : expanded + retirer collapsed de la liste
   selector.classList.toggle('expanded',!isOpen);
   list.classList.toggle('collapsed',isOpen);
-  title.classList.toggle('collapsed',isOpen);
+title.classList.toggle('collapsed',isOpen);
+document.getElementById('selector-chevron').textContent = isOpen ? '▲' : '▼';
 }
 
 loadSheets();
