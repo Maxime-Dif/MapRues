@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script>
+// Redirige /MapRues/ROWID vers /MapRues/?rowid=ROWID
+// GitHub Pages sert ce fichier pour toute URL inconnue
+const path = window.location.pathname;
+const parts = path.replace(/\/+$/, '').split('/');
+const last = parts[parts.length - 1];
+if(last && last !== 'MapRues'){
+  window.location.replace('/MapRues/?rowid=' + encodeURIComponent(last));
+} else {
+  window.location.replace('/MapRues/');
+}
+</script>
+</head>
+<body></body>
+</html>
