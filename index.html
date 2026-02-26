@@ -628,7 +628,7 @@ searchClear.onclick=()=>{ searchInput.value=''; searchClear.classList.remove('vi
 document.addEventListener('click',e=>{ if(!document.getElementById('search-bar').contains(e.target)) searchSugg.style.display='none'; });
 
 // ---- APPUI LONG SUR LA CARTE = détecter et analyser la rue ----
-map.on('contextmenu', async function(e){
+map.on('click', async function(e){
   const latlng = e.latlng;
   try{
     // 1. BAN identifie la rue exacte sous le doigt
